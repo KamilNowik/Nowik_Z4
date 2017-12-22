@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    int n, liczba, dolny, gorny, suma=0, dzielnik=0, srednia;
+    int n, liczba, dolny, gorny, suma=0, dzielnik=0;
     string wypisanie;
     cout << "Podaj, ile liczb calkowitych chcesz wczytac: " << endl;
     cin >> n;
@@ -34,8 +34,8 @@ int main()
 
     if (dzielnik!=0)
     {
-        srednia=suma/dzielnik;
-        cout << "Srednia z podanych liczb, nalezacych do przedzialu: <" << dolny << ", " << gorny << "> wynosi: " << srednia << endl;
+
+        cout << "Srednia z podanych liczb, nalezacych do przedzialu: <" << dolny << ", " << gorny << "> wynosi: " << (double)suma/dzielnik << endl;
 
     }
     else
@@ -44,18 +44,40 @@ int main()
     }
 
 
+    const int N=6;
+    int tablica[N];
+    cout << "Podaj " << N << " liczb calkowitych: " << endl;
+    for (int i=0; i<N; i++)
+    {
+        cin >> tablica[i];
+    }
+    int min=tablica[0];
+    for (int i=1; i<N; i++)
+    {
+        if(min>tablica[i])
+           {
+               min=tablica[i];
+           }
+    }
+    cout << endl << "Najmniejszy element to: " << min << endl;
 
+    cout << endl <<"Podane liczby to (w nawiasie znajduje sie roznica pomiedzy dana liczba, a najmniejsza z podanych liczb): " << endl;
+    for (int i=0; i<N; i++)
+    {
+        cout << tablica[i] << " (" << tablica[i]-min << "), ";
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    int schowek;
+    for (int i=0; i<(N/2); i++)
+    {
+        schowek=tablica[N-1-i];
+        tablica[N-1-i]=tablica[i];
+        tablica[i]=schowek;
+    }
+    cout << endl <<endl << "Tablica po odwroceniu: ";
+    for (int i=0; i<N; i++)
+    {
+        cout << tablica[i] << ", ";
+    }
     return 0;
 }
